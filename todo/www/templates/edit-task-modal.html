@@ -1,0 +1,28 @@
+<div class="modal">
+  <!-- // ion-header-bar -->
+  <ion-header-bar>
+    <button class="button button-clear button-assertive" ng-click="closeEditTask()">Cancel</button>
+    <h1 class='title'>Edit Task</h1>
+  </ion-header-bar>
+
+<!--       // modal content -->
+  <ion-content>
+    <form ng-submit="editTask(task)">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-change="$scope.activeProject.activeTask.title" ng-model="task.title">
+        </label>
+        <label class="item item-input">
+          <span class="input-label" ng-change="$scope.activeProject.activeTask.date">Date: </span>
+          <input type="date" ng-model="task.date">
+        </label>
+        <label class='item item-input'>
+          <input type="text" value="{{$scope.activeProject.activeTask.comment}}" ng-model="task.comment">
+        </label>
+      </div>
+      <div class="padding">
+        <button type="submit" class="button button-block button-positive">Save Task</button>
+      </div>
+    </form>
+  </ion-content>
+</div>

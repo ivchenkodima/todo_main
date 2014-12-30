@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mark as done</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link href="lib/ionic/release/css/ionic.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+   
+  </head>
+  <body ng-app="todo" ng-controller="ToDoCtrl">
+    <ion-side-menus>
+
+      <!-- center content -->
+      <ion-side-menu-content>
+    
+        <!-- header -->
+        <ion-header-bar class="bar-dark">      
+          <button class="button button-icon" ng-click="toggleProjects()">
+            <i class="icon ion-navicon"></i>
+          </button>
+          <h1 class="title">{{activeProject.title}}</h1>
+
+          <!-- new task  & delete task -->
+          <button class="button button-icon" ng-click="newTask()">
+            <i class="icon ion-ios7-plus-empty"></i>
+          </button>         
+        </ion-header-bar>
+
+        <ion-content class="has-header">
+          <!-- list of items -->
+          <ion-list>
+            <ion-item  class="item-icon-right" 
+                ng-repeat="task in activeProject.tasks | orderBy:'checked':false"
+                class="animate-repeat fade-in"
+                ng-click="toggleCheckTask(task)"
+                can-swipe="true">
+                <span class="item-note">{{task.date | date: "dd.MM.yyyy"}}</span>
+                {{task.title}} 
+                <p class=item-assertive>{{task.comment}}</p>
+                <i ng-if="task.checked" class="icon ion-checkmark  custom-icon"></i>
+                <ion-option-button 
+                    class="button padding"
+                    ng-click="editActiveTask(task); activeTask(task)">
+                    <i class="icon ion-ios7-compose-outline"></i>
+                </ion-option-button>
+                <ion-option-button 
+                    class=" button  padding"
+                    ng-click="deleteActiveTask(task)">
+                    <i class="icon ion-ios7-trash"></i>
+                </ion-option-button>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-side-menu-content>
+
+
+       <!-- left content -->
+      <ion-side-menu side="left"  expose-aside-when="large">  
+        <!-- header -->
+        <ion-header-bar class="bar-royal">
+          <h1 class="title">Projects</h1>
+          <button class="button button-icon ion-ios7-plus-empty" ng-click="newProject()"> 
+          </button>
+        </ion-header-bar>
+        <!-- content -->
+        <ion-content scroll="false">
+          <ion-list>
+            <ion-item ng-repeat="project in projects" ng-click="selectProject(project)" 
+                      ng-class="{'active': isActive(project)}">
+                {{project.title}}
+              <i ng-click="deleteSelectedProject(project)" class="icon ion-android-close"></i>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+
+
+      </ion-side-menu>
+
+    </ion-side-menus>      
+
+    <script id="new-task" type="text/ng-template"></script>
+    <script id="create-new-project" type="text/ng-template"></script>
+    <script id="edit-task" type="text/ng-template"></script>
+
+    <script src="cordova.js"></script>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <script src="lib/ionic/release/js/ionic.js"></script>
+    <script src="lib/ionic/release/js/ionic-angular.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+  
+  </body>
+</html>

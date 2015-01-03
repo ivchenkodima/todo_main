@@ -1,0 +1,29 @@
+<div class="modal">
+  <!-- // ion-header-bar -->
+  <ion-header-bar>
+    <button class="button button-clear button-assertive" ng-click="closeEditTask()">Cancel</button>
+    <h1 class='title'>Autorization</h1>
+  </ion-header-bar>
+
+<!--       // modal content -->
+  <ion-content>
+    <form class="login-form">
+      <h2>Log In</h2>
+      <div class="error" style="display:none"></div>
+        <input type="text" id="login-username" placeholder="Username" />
+        <input type="password" id="login-password" placeholder="Password" />
+      <button class="btn btn-clear btn-positive" ng-click="logIn()">Log In</button>
+  </form>
+
+  <form class="signup-form" ng-submit="singUp()">
+      <h2>Sign Up</h2>
+      <div class="error" style="display:none"></div>
+      <input type="text" id="signup-username" placeholder="Username" />
+      <input type="password" id="signup-password" placeholder="Create a Password" />
+      <button class="btn btn-clear btn-positive">Sign Up</button>
+  </form>
+  </ion-content>
+
+
+
+</div>

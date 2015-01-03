@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="modal" ng-controller="createTaskCtrl">
   <!-- // ion-header-bar -->
   <ion-header-bar>
     <button class="button button-clear button-assertive" ng-click="closeNewTask()">Cancel</button>
@@ -10,15 +10,15 @@
     <form name="newTaskForm" ng-submit="newTaskForm.$valid() && createTask(task)" novalidate>
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="What do you need to do?" ng-model="task.title" required class="ng-pristine ng-invalid">
+          <input type="text" placeholder="What do you need to do?" ng-model="task.title" required class="ng-pristine ng-invalid"/>
         </label>
         <label class="item item-input">
           <span class="input-label" placeholder="Date to do">Date:</span>
-          <input type="date" ng-model="task.date" required class="ng-pristine ng-invalid">
+          <input type="date" ng-model="task.date" required class="ng-pristine ng-invalid"/>
         </label>
         <label class='item item-input'>
           <input type="text" placeholder="Leave here a comment to task" ng-model="task.comment" required 
-                 class="ng-pristine ng-invalid">
+                 class="ng-pristine ng-invalid"/>
         </label>
       </div>
       <div> newTaskForm is {{newTaskForm.$valid}}</div>

@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="modal" ng-controller="createProjectCtrl">
   <!-- // ion-header-bar -->
   <ion-header-bar>
     <button class="button button-clear button-assertive" ng-click="closeNewProject()">Cancel</button>
@@ -7,10 +7,10 @@
 
 <!--       // modal content -->
   <ion-content>
-    <form ng-submit="createProject(project)">
+    <form ng-submit="createProject(project)" novalidate>
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="New project name" ng-model="project.name">
+          <input type="text" placeholder="New project name" ng-model="project.name" required>
         </label>
       </div>
       <div class="padding">

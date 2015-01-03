@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="modal" ng-controller="editTaskCtrl">
   <!-- // ion-header-bar -->
   <ion-header-bar>
     <button class="button button-clear button-assertive" ng-click="closeEditTask()">Cancel</button>
@@ -10,14 +10,14 @@
     <form ng-submit="editTask(task)">
       <div class="list">
         <label class="item item-input">
-          <input type="text" ng-change="$scope.activeProject.activeTask.title" ng-model="task.title">
+          <input type="text" ng-value="$scope.activeProject.activeTask.title" ng-model="task.title"/>
         </label>
         <label class="item item-input">
-          <span class="input-label" ng-change="$scope.activeProject.activeTask.date">Date: </span>
+          <span class="input-label" ng-value="$scope.activeProject.activeTask.date">Date: </span>
           <input type="date" ng-model="task.date">
         </label>
         <label class='item item-input'>
-          <input type="text" value="{{$scope.activeProject.activeTask.comment}}" ng-model="task.comment">
+          <input type="text" value="{{$scope.activeProject.activeTask.comment}}" ng-model="task.comment"/>
         </label>
       </div>
       <div class="padding">

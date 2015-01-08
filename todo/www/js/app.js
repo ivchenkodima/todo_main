@@ -1,5 +1,5 @@
-angular.module("todo", ['ionic', 'controllers'])
-
+angular.module("todo", 
+  ['ionic', 'controllers'])
 
 .service('Projects', function(){
   
@@ -27,7 +27,6 @@ angular.module("todo", ['ionic', 'controllers'])
     return parseInt(window.localStorage['lastActiveProject']) || 0;
   };  
   this.getLastActiveProject = function () {
-    // console.log("getLast active project", 'all',this.all(), 'lastactive index',this.getLastActiveIndex());
     return this.all()[this.getLastActiveIndex()];
   };
   this.getIndexOfProject = function (project) {
@@ -45,6 +44,7 @@ angular.module("todo", ['ionic', 'controllers'])
   
   this.loadFromStorage();
 });
+
 
 /*
 config(['$routeProvider', function($routeProvider) {

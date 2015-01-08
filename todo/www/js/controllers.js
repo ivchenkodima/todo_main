@@ -23,7 +23,6 @@ angular.module('controllers',[])
   }, true);
   $scope.$watch('activeProject', function (newValue, oldValue) {
     if (newValue == oldValue) return false;
-    // console.log('activeProject changes', arguments);
     Projects.setActiveProject($scope.activeProject);
   }, true);
 
@@ -37,7 +36,6 @@ angular.module('controllers',[])
     var newProject = Projects.newProject(project.name);
     $scope.projects.push(newProject);
     $scope.selectProject(newProject);
-
     $scope.closeNewProject();
     project.name = null;
   };

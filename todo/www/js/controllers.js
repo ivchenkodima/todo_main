@@ -1,20 +1,5 @@
 angular.module('controllers',[])
 
-// .service('svc', function() {
-//             var svc = {};
-
-//             svc.method = function() {
-//                 alert(1);
-//             }
-
-//             return svc;
-//         })
-//         .controller('ctrl', [
-//             '$scope', 'svc', function($scope, svc) {
-//                 svc.method();
-//             }
-//         ]);
-
 .controller('ProjectCtrl',function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate){
   
   $scope.projects = Projects.all();
@@ -28,7 +13,6 @@ angular.module('controllers',[])
 
   $timeout(function() {
     var a = Projects.getLastActiveProject();
-    // console.log("initActive project", a);
     $scope.activeProject = a || newProject();
   },0);
 
@@ -42,7 +26,6 @@ angular.module('controllers',[])
   $scope.isActive = function (project) {
     return $scope.activeProject === project;
   };
-  // called to sellect the given project
   $scope.selectProject  = function(project){
     $scope.activeProject = project;
     $ionicSideMenuDelegate.toggleLeft(true);
@@ -74,12 +57,11 @@ angular.module('controllers',[])
 })
 
 .controller('TaskCtrl', function($scope){
-// called when the form is submited
+
   $scope.createTask = function(task){
     if(!$scope.activeProject || !task){
       return;
     }
-    // console.info("push new task to active project object", $scope.activeProject);
     $scope.activeProject.tasks.push({
       title: task.title,
       date: new Date(task.date) || new Date(),
@@ -115,8 +97,7 @@ angular.module('controllers',[])
     $scope.editTaskModal = modal;
   });
   $scope.editTask = function(task){
-    // if (typeof activeTask === 'undefined') return;
-    // if(!$scope.activeProject.activeTask || !activeTask) return;
+    
     var indexOf = $scope.activeProject.activeTask;
 
     $scope.activeProject.activeTask.title = task.title || $scope.activeProject.activeTask.title;
@@ -151,7 +132,4 @@ angular.module('controllers',[])
   };
 
 })
- 
-// .controller('AutorisationCtrl',function($scope){
 
-// });
